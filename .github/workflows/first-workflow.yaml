@@ -1,13 +1,33 @@
 name: First Workflow
 on: [push]
 
+#Dit zijn opdrachten die uitgevoerd worden in de workflow
 jobs:
+#De eerste job toont op een ubuntu runner de tekst "Hello world on the ubuntu runner" en de versies van node en npm
   run-shell-commands:
     runs-on: ubuntu-latest
     steps:
+    #Naam en declaratie van de eerste stap in de job
     - name: echo a string
       run: echo "Hello world on the ubuntu runner"
+    #Naam en declaratie van de tweede stap in de job
     - name: Multineline Command
       run: |
         node -v
         npm -v
+#De tweede job toont op een MacOs runner de MacOs versie
+  parallel-job-macos:
+    runs-on: macos-latest
+    steps:
+    #De eerste stap binnen de job toont de MacOs versie
+    - name: Toon MacOs version
+      run: sw_vers
+
+  dependant-job-windows:
+    runs-on: windows-latests
+    needs: [run-shell-commands]
+    steps:
+    - name: echo a string
+      run: Write-Output "Hello world on the windows runner"
+    - name: Error Step
+      run: doesnotexist
