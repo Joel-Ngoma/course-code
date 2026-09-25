@@ -24,10 +24,8 @@ jobs:
       run: sw_vers
 
   dependant-job-windows:
-    runs-on: windows-latests
+    runs-on: windows-latest
     needs: [run-shell-commands]
     steps:
     - name: echo a string
       run: Write-Output "Hello world on the windows runner"
-    - name: Error Step
-      run: doesnotexist
