@@ -1,5 +1,11 @@
 name: Working Dirs & Shalls
 on: [push]
+#default shell dat gebruikt wordt over all jobs tenzij ze worden overschreven in de job
+defaults:
+  run:
+    shell: bash
+    #je kunt de working directory op workflow niveau wijzigen, alleen als de working dir naarwaar je verwijst bestaat. Als de working dir niet bestaat dan wordt de workflow afgebroken met een error.    
+    working-directory: ./course-code
 jobs:
   display-working-directory-linux:
     runs-on: ubuntu-latest
@@ -11,9 +17,37 @@ jobs:
         echo $GITHUB_SHA
         echo $GITHUB_REPOSITORY
         echo $GITHUB_WORKSPACE
+#Aantonen dat je voor een specifieke stap de working directory kan instellen die gebruikt wordt in de job. In dit geval wordt de working directory ingesteld op /home/runner
+#Dit kan ook op workflow niveau en op job niveau
+    - name: Change working Directory
+      working-directory: /home/runner
+      run: |
+       pwd 
+
+#Aantonen dat je voor een specifieke job de shell kan instellen die gebruikt wordt in de job. In dit geval wordt de shell ingesteld op pwsh
+  display-working-directory-windows-In_Powershell:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+    - name: Display working directory and fils
+      run: |
+        Get-Location
+        dir
+        echo $env:GITHUB_SHA
+        echo $env:GITHUB_REPOSITORY
+        echo $env:GITHUB_WORKSPACE
+    #Aantonen dat je voor een specifieke stap de shell kan instellen die gebruikt wordt in de stap. In dit geval wordt de shell ingesteld op python
+    - name: Python shell
+      shell: python
+      run: |
+        import platform
+        print("Python version:", platform.python_version())
+        print("Hallo ik word uitgevoerd in de python shell")
 
 
-  display-working-directory-windows:
+  display-working-directory-windows-In-Bash:
     runs-on: windows-latest
     steps:
     - name: Display working directory and fils
