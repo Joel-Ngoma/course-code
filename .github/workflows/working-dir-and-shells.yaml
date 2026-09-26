@@ -5,7 +5,7 @@ defaults:
   run:
     shell: bash
     #je kunt de working directory op workflow niveau wijzigen, alleen als de working dir naarwaar je verwijst bestaat. Als de working dir niet bestaat dan wordt de workflow afgebroken met een error.    
-    working-directory: ./course-code
+    # working-directory: ./course-code
 jobs:
   display-working-directory-linux:
     runs-on: ubuntu-latest
