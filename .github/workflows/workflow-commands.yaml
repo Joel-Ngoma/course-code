@@ -20,3 +20,14 @@ jobs:
     - name: Setting a notice message with paramters
       run: echo "::notice title=Notice title,file=app.js,line=2,endLine=3,col=5,endColumn=7::Missing semicolone"
        
+    - name: Group of commandss
+      run: |
+        echo "::group::My group of commands"
+        echo "Iniside group of commands"
+        echo "::endgroup::"
+
+    - name: Masking a value
+      run: echo "::add-mask::my-secret-password"
+
+    - name: echo a secret
+      run: echo "my-secret-password"
