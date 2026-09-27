@@ -9,3 +9,5 @@ jobs:
           echo "$GITHUB_SHA"
           echo "$GITHUB_REF"
       - uses: actions/checkout@v7
+      - name: Een random echo laten zien als testing
+        run: echo "Dit is een test om te tonen dat de echo string werkt"
