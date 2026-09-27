@@ -10,4 +10,9 @@ jobs:
           echo "$GITHUB_REF"
       - uses: actions/checkout@v7
       - name: Een random echo laten zien als testing
-        run: echo "Dit is een test om te tonen dat de echo string werkt"
+        run: | 
+          echo "Dit is een test om te tonen dat de echo string werkt"
+          echo "EVENT=$GITHUB_EVENT_NAME"
+          echo "REF=$GITHUB_REF"
+          echo "HEAD_REF=$GITHUB_HEAD_REF"
+          echo "BASE_REF=$GITHUB_BASE_REF"
