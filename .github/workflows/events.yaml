@@ -1,5 +1,6 @@
 name: Repository Events
 on: # [push, pull_request, issues]
+# Hiermee kan je types mee geven in de events
    push:
    pull_request: 
       types: [ opened, assigned, reopened, synchronize ]
