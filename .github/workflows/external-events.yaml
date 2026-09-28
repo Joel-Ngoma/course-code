@@ -6,6 +6,7 @@ on:
 
 
 jobs:
+#De taak dat uitgevoerd word is het tonen van een extra echo string in de workflow run van de workflow-run.yaml
   echo-string:
     runs-on: ubuntu-latest
     steps:
