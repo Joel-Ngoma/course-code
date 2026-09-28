@@ -1,5 +1,37 @@
 name: Repository Events
-on: [push, pull_request, issues]
+on: 
+  push:
+  #belangrijke nota de voorwaarde vooraleer deze workflow gerunned zal worden is dat er gepushed moet worden uit de vermelde branches, dat ze ook de opgeven tags moeten matchen en dat er ook een file moet gepushed worden die voldoet aan de opgegeven path voorwaarden. Als er geen van deze voorwaarden voldaan is zal de workflow niet uitgevoerd worden.
+    branches:
+    #De volgorde is ook belangrijk als je een negatie wilt gebruiken doe je dit best op het einde anders zal deze geoverruled worden door een mogelijke volgende regel!
+      - main
+      #matches all branches that start with "testing/" and any subdirectory under "testing/ en ook onder testing/nogsubdir/hier"
+      - "testing/**"
+      #matches all branches dat starts witch "testing"
+      - "testing*"
+      # matches all branches that start with "feature/" and any subdirectory under "testing/"
+      - "!feature/*"
+    #Je kunt branches en ignore branches niet te samen gebruiken, daarom gebruik je de ! als alternatief om een branch te negeren zoals hierboven om toch hetzelfde effect te krijgen
+    # branches-ignore:
+    #   - "feature/feata"
+
+    tags: 
+      - v1.* #matches all tags that start with "v1."
+      - "!1.1.1" #matches all tags that start with "v1." but not "v1.1.1"''
+
+    #workflow gaat alleen uitgevoerd worden wanneer een .js file gepushed wordt
+    paths: 
+      - '**.js' #matches all files that end with ".js" in the root directory and any subdirectory
+      - '!app.js' #matches all files that end with ".js" in the root directory and any subdirectory but not "app.js"
+  pull_request:
+  #Hetzelfe voor de PR er zal alleen uitgevoerd worden bij het openen, assigned, reopenen en synchroniseren van een PR, met als doelbranch de main branch en enkel als er een .js file in de PR zit.
+    types: [opened, assigned, reopened, synchronize]
+    branches: 
+      - main
+    paths: 
+      - "**.js"
+  issues:
+    types: [opened]
 
 jobs:
   checkout-test:
@@ -12,8 +44,3 @@ jobs:
       - name: Een random echo laten zien als testing
         run: | 
           echo "Dit is een test om te tonen dat de echo string werkt"
-          echo "EVENT=$GITHUB_EVENT_NAME"
-          echo "REF=$GITHUB_REF"
-          echo "HEAD_REF=$GITHUB_HEAD_REF"
-          echo "BASE_REF=$GITHUB_BASE_REF"
-          echo "SHA=$GITHUB_SHA"

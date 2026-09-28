@@ -1,0 +1,10 @@
+name: Manual Triggered
+on: 
+  workflow_dispatch:
+
+jobs:
+  log-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Toon een bericht
+        run: echo "Deze stap is handmatig getriggerd via workflow_dispatch."
