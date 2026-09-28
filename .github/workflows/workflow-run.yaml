@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "Dit is een test om te tonen dat de echo string werkt""
+          echo "Dit is een test om te tonen dat de echo string werkt"
