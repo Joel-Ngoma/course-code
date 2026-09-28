@@ -1,0 +1,13 @@
+name: External Events
+#kan alleen worden getriggerd via jouw default branch (main) en via een repository dispatch event
+on:
+  repository_dispatch:
+
+
+
+jobs:
+  echo-string:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Dit is een test om te tonen dat de echo string werkt via repo dispatch"
