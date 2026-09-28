@@ -35,6 +35,7 @@ jobs:
     steps:
       - name: Toon een bericht
         run: echo "Deze stap is handmatig getriggerd via workflow_dispatch."
+      - name: Log Informatie
         run: |
           echo "Ingevoerde string: ${{ github.event.inputs.string }}"
           echo "Ingevoerde nummer: ${{ github.event.inputs.number }}"
