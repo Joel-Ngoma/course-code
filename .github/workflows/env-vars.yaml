@@ -17,7 +17,7 @@ jobs:
         run: echo '${{ github.ref }}'
       - name: Log Custom ENV Vars
         env:
-          STEP_LEVEL_ENV: beschikbaar in deze stap
+          STEP_LEVEL_ENV: "beschikbaar in deze stap"
           WF_LEVEL_ENV: overriden in step
         run: |
           echo '${{ env.STEP_LEVEL_ENV }}'
