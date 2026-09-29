@@ -13,8 +13,8 @@ jobs:
         run: echo 'Runs only on failure'
       - name: Runs on Succes
        #Not needed (default behaviour)
-        if: succes()
-        run: echo 'Runs on succes'
+        if: success()
+        run: echo 'Runs on success'
       - name: Always Runs
         #if: success() || failure()
         if: always()
