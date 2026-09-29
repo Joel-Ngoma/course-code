@@ -1,5 +1,6 @@
-name: expressions & Contexts
+name: Expressions & Contexts
 on :  [push, pull_request, issues, workflow_dispatch]
+run-name: "Expressions & Contexts by @${{ github.actor }}, event: ${{ github.event_name }}"
 
 jobs:
   using-expressions-and-contexts:
@@ -17,7 +18,7 @@ jobs:
           echo ${{ true && false }}
           echo ${{ true || (false && true) }}
 
-      - name: Dum Contexts
+      - name: Dump Contexts
         run: |
             echo '${{ toJson(github) }}'
             echo '${{ toJson(job) }}'
