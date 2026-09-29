@@ -9,7 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     #if: $GITHUB_REF == 'refs/heads/main' Gaat niet werken aangezien het in de runners context zal uitgevoerd worden
     if: github.ref == 'refs/heads/main'
-    env: beschikbaar voor alle steps in deze job
+    env: 
+      JOB_LEVEL_ENV: beschikbaar voor alle steps in deze job
     steps:
       - name: Log ENV VAR
         run: echo $GITHUB_REF
