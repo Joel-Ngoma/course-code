@@ -1,0 +1,16 @@
+name : Stale Issues & Prs
+on: 
+  shedule:
+   - cron: "0 12 * * *"
+   - cron: "0 13 * * *" #Voor testing
+
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actians/stale@v11
+        with:
+          stale-issue-message: 'This issue has been automatically marked as stale because it has not had recent activity. It will be closed if no further activity occurs.'
+          days-before-stale: 1
+          days-before-close: 5
