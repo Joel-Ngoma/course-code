@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Run only if issue has a bug label
         if: contains(github.events.issue.labels.*.name, 'bug')
-        run: echo ${{ join(github.events.issue.labels.*.name, ', ') }}
+        run: echo ${{ join(github.event.issue.labels.*.name, ', ') }}
 
   #2e job
   using-expressions-and-contexts:
