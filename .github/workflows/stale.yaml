@@ -1,6 +1,6 @@
 name : Stale Issues & Prs
 on: 
-  shedule:
+  schedule:
    - cron: "0 12 * * *"
    - cron: "0 13 * * *" #Voor testing
 
