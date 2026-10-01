@@ -9,10 +9,32 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
         node-version: [16, 18, 20]
+        include:
+          - os: ubuntu-latest
+            is-ubuntu: true
+          - os: macos-latest
+            node-version: 15
+          - experimental: false
+          - os: windows-latest
+            node-version: 16
+            experimental: true
+          - os: ubuntu-latest
+            node-version: 19
+            experimental: true
+        exclude:
+          - os: ubuntu-latest
+            node-version: 16
+
+      fail-fast: false
+      #hiermee zullen alleen 3 jobs tegelijk draaien, ipv 6 tegelijk
+      # max-parallel: 3
     runs-on: ${{ matrix.os }}
+    continue-on-error: false
     steps:
       - name: Toon node versie
-        run: node -v
+        run: |
+          node -v
+          echo '${{ toJson(matrix) }}'
       - uses: actions/setup-node@v7 
         with:
           node-version: ${{ matrix.node-version }}
