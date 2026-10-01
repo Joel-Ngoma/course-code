@@ -4,7 +4,11 @@ on: [push]
 
 jobs: 
   job-1:
+
     runs-on: ubuntu-latest
+    #kan ook op job level waarbij de hele job een timeout krijgt
+    # timeout-minutes: 1
+
     steps:
        #deze stap zal nu meer dan 1 minuut duren waardoor deze stap zal aanzien worden als een failure
       - name: Step 1
