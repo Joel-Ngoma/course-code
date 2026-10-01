@@ -6,8 +6,10 @@ jobs:
   job-1:
     runs-on: ubuntu-latest
     steps:
+       #deze stap zal nu meer dan 1 minuut duren waardoor deze stap zal aanzien worden als een failure
       - name: Step 1
-        run: sleep 20
+        run: sleep 95
+        timeout-minutes: 1
         #express de step laten falen om te testen
       # - name: Fail
       #   run: exit 1
