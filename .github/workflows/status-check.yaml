@@ -11,14 +11,16 @@ jobs:
         #express de step laten falen om te testen
       # - name: Fail
       #   run: exit 1
+      #Wanneer de stap faalt zal de rest van de andere stappen nog uitgevoerd worden
       - name: Step 2
         id: step-2
+        continue-on-error: true
         run: exit 1
       - name: Runs on Failure step 2
         if: failure() && steps.step-2.conclusion == 'failure'
         run: echo 'Step 2 has failed'
       - name: Runs on any failure
-      
+
         if: failure()
         run: echo 'failure'
       - name: Runs on Succes
